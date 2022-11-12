@@ -1,6 +1,8 @@
 const { saveUser } = require('./controller');
 const router = require('express').Router();
 
-router.post('/', saveUser);
+const { checkToken } = require('./../middleware/authMiddleware');
+router.post('/', checkToken , saveUser);
+
 
 module.exports = router;
